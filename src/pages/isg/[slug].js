@@ -3,7 +3,8 @@ import { Typography } from 'antd';
 
 const { Link, Text } = Typography;
 
-export default function isg({ date }) {
+export default function isg(props) {
+    const date = new Date(props.now).toLocaleString();
     return (
         <>
             <Content title='Página ISG (Incrementally Static Generate)' date={date} />
@@ -28,7 +29,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async(context) => {
     return {
         props: {
-            date: new Date().toLocaleString(),
+            now: Date.now(),
             slug: context.params.slug
         }
     }

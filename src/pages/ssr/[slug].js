@@ -3,7 +3,8 @@ import { Typography } from 'antd';
 
 const { Text } = Typography;
 
-export default function ssr({ date }) {
+export default function ssr(props) {
+    const date = new Date(props.now).toLocaleString();
     return (
         <>
             <Content 
@@ -20,7 +21,7 @@ export default function ssr({ date }) {
 export const getServerSideProps = async(context) => {
     return {
         props: {
-            date: new Date().toLocaleString(),
+            now: Date.now(),
             slug: context.query.slug
         }
     }

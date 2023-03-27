@@ -3,7 +3,8 @@ import { Typography } from 'antd';
 
 const { Link, Text } = Typography;
 
-export default function ssg({ date }) {
+export default function ssg(props) {
+    const date = new Date(props.now).toLocaleString();
     return (
         <>
             <Content title='Página SSG (Static Site Generated)' repositories={[]} date={date} />
@@ -28,7 +29,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async(context) => {
     return {
         props: {
-            date: new Date().toLocaleString(),
+            now: Date.now(),
             slug: context.params.slug
         }
     }
