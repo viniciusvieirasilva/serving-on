@@ -1,4 +1,4 @@
-import Content from "./components/content";
+import Content from "../../components/Content";
 import { Typography } from 'antd';
 
 const { Link, Text } = Typography;
