@@ -61,7 +61,7 @@ export default function App({ Component, pageProps }) {
           />
         </Header>
         <Content>
-          <Card bordered={false} style={{ margin: '40px', width: '100%' }}>
+          <Card bordered={false} style={{ margin: '40px' }}>
             <Component {...pageProps} />
           </Card>
         </Content>
