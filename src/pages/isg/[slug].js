@@ -1,4 +1,5 @@
 import Content from "../../components/Content";
+import { sleeper } from '../../helpers.js'
 import { Typography } from 'antd';
 
 const { Link, Text } = Typography;
@@ -27,6 +28,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async(context) => {
+    await sleeper(5)()
     return {
         props: {
             now: Date.now(),
