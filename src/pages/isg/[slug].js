@@ -1,11 +1,25 @@
-import Content from "../../components/Content";
+import Content from "../../components/Content"
 import { sleeper } from '../../helpers.js'
-import { Typography } from 'antd';
+import { Typography } from 'antd'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 
-const { Link, Text } = Typography;
+const { Link, Text } = Typography
 
-export default function isg(props) {
-    const date = new Date(props.now).toLocaleString();
+export default function Isg(props) {
+    const router = useRouter()
+
+    if (router.isFallback) return (
+      <main>
+        <Head>
+          <title>Página ISR (Incrementally Static Regenerated)</title>
+        </Head>
+        <h1>Página ISR (Incrementally Static Regenerated)</h1>
+        <p>Aguarde, a página está sendo gerada no servidor.</p>
+      </main>
+    )
+
+    const date = new Date(props.now)
     return (
         <>
             <Content title='Página ISG (Incrementally Static Generate)' date={date} />

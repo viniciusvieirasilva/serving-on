@@ -13,7 +13,7 @@ export default function Content ({ title, description, date }) {
             </Head>
             <h1>{title}</h1>
             <span>{description}</span>
-            <p><span>Página criada em <Text mark>{date}</Text> mas são <Text mark><Clock /></Text> agora.</span></p>
+            <p><span>Página criada em <Text mark><time>{date.toLocaleString()}</time></Text> mas são <Text mark><Clock /></Text> agora.</span></p>
         </>
     )
 }
