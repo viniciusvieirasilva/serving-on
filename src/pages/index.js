@@ -1,19 +1,25 @@
-import Clock from '@/components/Clock'
 import Head from 'next/head'
-import { Typography } from 'antd';
+import Content from '../components/Content'
+import Clock from '@/components/Clock'
+import { Typography } from 'antd'
+import { useEffect, useState } from 'react'
 
-const { Text } = Typography;
+const { Text } = Typography
 
-export default function Home() {
-  const date = new Date(Date.now())
+export default function Home () {
+  const [date, setDate] = useState(null)
+  useEffect(() => {
+    setDate(new Date(Date.now()))
+  }, [])
+
+  if (!date) return <h1>Carregando</h1>
   return (
     <>
       <Head>
         <title>Página Inicial</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <h1>Página Inicial</h1>
-      <p>Página estática criada em <Text mark><time>{date.toLocaleString()}</time></Text> mas são <Text mark><Clock /></Text> agora.</p>
+      <Content title='Página Inicial' date={date} />
     </>
   )
 }
